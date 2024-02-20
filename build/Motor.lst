@@ -1,0 +1,444 @@
+ARM GAS  /tmp/ccxOoROk.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"Motor.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/Components/Motor.c"
+  20              		.section	.text.GetMotor,"ax",%progbits
+  21              		.align	1
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	GetMotor:
+  27              	.LVL0:
+  28              	.LFB223:
+   1:Core/Src/Components/Motor.c **** #include "Components/Motor.h"
+   2:Core/Src/Components/Motor.c **** 
+   3:Core/Src/Components/Motor.c **** static TIM_HandleTypeDef* GetMotor(Orientation orientation) {
+  29              		.loc 1 3 61 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+   4:Core/Src/Components/Motor.c ****   switch(orientation) {
+  34              		.loc 1 4 3 view .LVU1
+  35 0000 0328     		cmp	r0, #3
+  36 0002 07D8     		bhi	.L2
+  37 0004 DFE800F0 		tbb	[pc, r0]
+  38              	.L4:
+  39 0008 07       		.byte	(.L7-.L4)/2
+  40 0009 09       		.byte	(.L8-.L4)/2
+  41 000a 02       		.byte	(.L5-.L4)/2
+  42 000b 04       		.byte	(.L3-.L4)/2
+  43              		.p2align 1
+  44              	.L5:
+   5:Core/Src/Components/Motor.c ****     case FrontLeft:
+   6:Core/Src/Components/Motor.c ****       return &htim2;
+   7:Core/Src/Components/Motor.c ****     case FrontRight:
+   8:Core/Src/Components/Motor.c ****       return &htim3;
+   9:Core/Src/Components/Motor.c ****     case BackLeft:
+  10:Core/Src/Components/Motor.c ****       return &htim4;
+  45              		.loc 1 10 7 view .LVU2
+  46              		.loc 1 10 14 is_stmt 0 view .LVU3
+  47 000c 0448     		ldr	r0, .L9
+  48              	.LVL1:
+ARM GAS  /tmp/ccxOoROk.s 			page 2
+
+
+  49              		.loc 1 10 14 view .LVU4
+  50 000e 7047     		bx	lr
+  51              	.LVL2:
+  52              	.L3:
+  11:Core/Src/Components/Motor.c ****     case BackRight:
+  12:Core/Src/Components/Motor.c ****       return &htim5;
+  53              		.loc 1 12 7 is_stmt 1 view .LVU5
+  54              		.loc 1 12 14 is_stmt 0 view .LVU6
+  55 0010 0448     		ldr	r0, .L9+4
+  56              	.LVL3:
+  57              		.loc 1 12 14 view .LVU7
+  58 0012 7047     		bx	lr
+  59              	.LVL4:
+  60              	.L2:
+  61              	.LVL5:
+  13:Core/Src/Components/Motor.c ****   }
+  14:Core/Src/Components/Motor.c **** }
+  62              		.loc 1 14 1 view .LVU8
+  63 0014 7047     		bx	lr
+  64              	.LVL6:
+  65              	.L7:
+   4:Core/Src/Components/Motor.c ****     case FrontLeft:
+  66              		.loc 1 4 3 view .LVU9
+  67 0016 0448     		ldr	r0, .L9+8
+  68              	.LVL7:
+   4:Core/Src/Components/Motor.c ****     case FrontLeft:
+  69              		.loc 1 4 3 view .LVU10
+  70 0018 7047     		bx	lr
+  71              	.LVL8:
+  72              	.L8:
+   8:Core/Src/Components/Motor.c ****     case BackLeft:
+  73              		.loc 1 8 14 view .LVU11
+  74 001a 0448     		ldr	r0, .L9+12
+  75              	.LVL9:
+  76              		.loc 1 14 1 view .LVU12
+  77 001c 7047     		bx	lr
+  78              	.L10:
+  79 001e 00BF     		.align	2
+  80              	.L9:
+  81 0020 00000000 		.word	htim4
+  82 0024 00000000 		.word	htim5
+  83 0028 00000000 		.word	htim2
+  84 002c 00000000 		.word	htim3
+  85              		.cfi_endproc
+  86              	.LFE223:
+  88              		.global	__aeabi_ui2d
+  89              		.global	__aeabi_ddiv
+  90              		.global	__aeabi_dmul
+  91              		.global	__aeabi_d2iz
+  92              		.section	.text._ChangeSpeed,"ax",%progbits
+  93              		.align	1
+  94              		.global	_ChangeSpeed
+  95              		.syntax unified
+  96              		.thumb
+  97              		.thumb_func
+  99              	_ChangeSpeed:
+ 100              	.LVL10:
+ARM GAS  /tmp/ccxOoROk.s 			page 3
+
+
+ 101              	.LFB226:
+  15:Core/Src/Components/Motor.c **** 
+  16:Core/Src/Components/Motor.c **** void InitializeMotor(Orientation orientation) {
+  17:Core/Src/Components/Motor.c ****   switch(orientation) {
+  18:Core/Src/Components/Motor.c ****     case FrontLeft:
+  19:Core/Src/Components/Motor.c ****       SetupTIMHandle(&htim2, TIM2, true);
+  20:Core/Src/Components/Motor.c ****       break;
+  21:Core/Src/Components/Motor.c ****     case FrontRight:
+  22:Core/Src/Components/Motor.c ****       SetupTIMHandle(&htim3, TIM3, true);
+  23:Core/Src/Components/Motor.c ****       break;
+  24:Core/Src/Components/Motor.c ****     case BackLeft:
+  25:Core/Src/Components/Motor.c ****       SetupTIMHandle(&htim4, TIM4, true);
+  26:Core/Src/Components/Motor.c ****       break;
+  27:Core/Src/Components/Motor.c ****     case BackRight:
+  28:Core/Src/Components/Motor.c ****       SetupTIMHandle(&htim5, TIM5, true);
+  29:Core/Src/Components/Motor.c ****       break;
+  30:Core/Src/Components/Motor.c ****   } 
+  31:Core/Src/Components/Motor.c **** }
+  32:Core/Src/Components/Motor.c **** 
+  33:Core/Src/Components/Motor.c **** void _StopMotor(Orientation orientation) {
+  34:Core/Src/Components/Motor.c ****   if (HAL_TIM_PWM_Stop(GetMotor(orientation), TIM_CHANNEL_1) != HAL_OK) Error_Handler();
+  35:Core/Src/Components/Motor.c **** }
+  36:Core/Src/Components/Motor.c **** 
+  37:Core/Src/Components/Motor.c **** void _ChangeSpeed(Orientation orientation, uint16_t speedPercent) {
+ 102              		.loc 1 37 67 is_stmt 1 view -0
+ 103              		.cfi_startproc
+ 104              		@ args = 0, pretend = 0, frame = 0
+ 105              		@ frame_needed = 0, uses_anonymous_args = 0
+ 106              		.loc 1 37 67 is_stmt 0 view .LVU14
+ 107 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 108              	.LCFI0:
+ 109              		.cfi_def_cfa_offset 24
+ 110              		.cfi_offset 3, -24
+ 111              		.cfi_offset 4, -20
+ 112              		.cfi_offset 5, -16
+ 113              		.cfi_offset 6, -12
+ 114              		.cfi_offset 7, -8
+ 115              		.cfi_offset 14, -4
+ 116 0002 0C46     		mov	r4, r1
+  38:Core/Src/Components/Motor.c ****   if (speedPercent > 100) speedPercent = 100;
+ 117              		.loc 1 38 3 is_stmt 1 view .LVU15
+ 118              		.loc 1 38 6 is_stmt 0 view .LVU16
+ 119 0004 6429     		cmp	r1, #100
+ 120 0006 00D9     		bls	.L12
+ 121              		.loc 1 38 40 view .LVU17
+ 122 0008 6424     		movs	r4, #100
+ 123              	.L12:
+ 124              	.LVL11:
+  39:Core/Src/Components/Motor.c **** 
+  40:Core/Src/Components/Motor.c ****   TIM_HandleTypeDef* MotorController = GetMotor(orientation);
+ 125              		.loc 1 40 3 is_stmt 1 view .LVU18
+ 126              		.loc 1 40 40 is_stmt 0 view .LVU19
+ 127 000a FFF7FEFF 		bl	GetMotor
+ 128              	.LVL12:
+ 129              		.loc 1 40 40 view .LVU20
+ 130 000e 0546     		mov	r5, r0
+ 131              	.LVL13:
+ARM GAS  /tmp/ccxOoROk.s 			page 4
+
+
+  41:Core/Src/Components/Motor.c **** 
+  42:Core/Src/Components/Motor.c ****   int Pulse = ((double)(speedPercent)/100)*(MotorController->Init.Period);
+ 132              		.loc 1 42 3 is_stmt 1 view .LVU21
+ 133              		.loc 1 42 16 is_stmt 0 view .LVU22
+ 134 0010 2046     		mov	r0, r4
+ 135              	.LVL14:
+ 136              		.loc 1 42 16 view .LVU23
+ 137 0012 FFF7FEFF 		bl	__aeabi_ui2d
+ 138              	.LVL15:
+ 139              		.loc 1 42 38 view .LVU24
+ 140 0016 0022     		movs	r2, #0
+ 141 0018 084B     		ldr	r3, .L15
+ 142 001a FFF7FEFF 		bl	__aeabi_ddiv
+ 143              	.LVL16:
+ 144 001e 0646     		mov	r6, r0
+ 145 0020 0F46     		mov	r7, r1
+ 146              		.loc 1 42 43 view .LVU25
+ 147 0022 E868     		ldr	r0, [r5, #12]
+ 148 0024 FFF7FEFF 		bl	__aeabi_ui2d
+ 149              	.LVL17:
+ 150 0028 3246     		mov	r2, r6
+ 151 002a 3B46     		mov	r3, r7
+ 152 002c FFF7FEFF 		bl	__aeabi_dmul
+ 153              	.LVL18:
+ 154              		.loc 1 42 7 view .LVU26
+ 155 0030 FFF7FEFF 		bl	__aeabi_d2iz
+ 156              	.LVL19:
+  43:Core/Src/Components/Motor.c ****   __HAL_TIM_SET_COMPARE(MotorController, TIM_CHANNEL_1, Pulse);
+ 157              		.loc 1 43 3 is_stmt 1 view .LVU27
+ 158 0034 2B68     		ldr	r3, [r5]
+ 159 0036 5863     		str	r0, [r3, #52]
+  44:Core/Src/Components/Motor.c **** }
+ 160              		.loc 1 44 1 is_stmt 0 view .LVU28
+ 161 0038 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 162              	.LVL20:
+ 163              	.L16:
+ 164              		.loc 1 44 1 view .LVU29
+ 165 003a 00BF     		.align	2
+ 166              	.L15:
+ 167 003c 00005940 		.word	1079574528
+ 168              		.cfi_endproc
+ 169              	.LFE226:
+ 171              		.section	.text.InitializeMotor,"ax",%progbits
+ 172              		.align	1
+ 173              		.global	InitializeMotor
+ 174              		.syntax unified
+ 175              		.thumb
+ 176              		.thumb_func
+ 178              	InitializeMotor:
+ 179              	.LVL21:
+ 180              	.LFB224:
+  16:Core/Src/Components/Motor.c ****   switch(orientation) {
+ 181              		.loc 1 16 47 is_stmt 1 view -0
+ 182              		.cfi_startproc
+ 183              		@ args = 0, pretend = 0, frame = 0
+ 184              		@ frame_needed = 0, uses_anonymous_args = 0
+  16:Core/Src/Components/Motor.c ****   switch(orientation) {
+ARM GAS  /tmp/ccxOoROk.s 			page 5
+
+
+ 185              		.loc 1 16 47 is_stmt 0 view .LVU31
+ 186 0000 08B5     		push	{r3, lr}
+ 187              	.LCFI1:
+ 188              		.cfi_def_cfa_offset 8
+ 189              		.cfi_offset 3, -8
+ 190              		.cfi_offset 14, -4
+  17:Core/Src/Components/Motor.c ****     case FrontLeft:
+ 191              		.loc 1 17 3 is_stmt 1 view .LVU32
+ 192 0002 0328     		cmp	r0, #3
+ 193 0004 09D8     		bhi	.L17
+ 194 0006 DFE800F0 		tbb	[pc, r0]
+ 195              	.L20:
+ 196 000a 02       		.byte	(.L23-.L20)/2
+ 197 000b 09       		.byte	(.L22-.L20)/2
+ 198 000c 0F       		.byte	(.L21-.L20)/2
+ 199 000d 15       		.byte	(.L19-.L20)/2
+ 200              		.p2align 1
+ 201              	.L23:
+  19:Core/Src/Components/Motor.c ****       break;
+ 202              		.loc 1 19 7 view .LVU33
+ 203 000e 0122     		movs	r2, #1
+ 204 0010 4FF08041 		mov	r1, #1073741824
+ 205 0014 0A48     		ldr	r0, .L26
+ 206              	.LVL22:
+  19:Core/Src/Components/Motor.c ****       break;
+ 207              		.loc 1 19 7 is_stmt 0 view .LVU34
+ 208 0016 FFF7FEFF 		bl	SetupTIMHandle
+ 209              	.LVL23:
+  20:Core/Src/Components/Motor.c ****     case FrontRight:
+ 210              		.loc 1 20 7 is_stmt 1 view .LVU35
+ 211              	.L17:
+  31:Core/Src/Components/Motor.c **** 
+ 212              		.loc 1 31 1 is_stmt 0 view .LVU36
+ 213 001a 08BD     		pop	{r3, pc}
+ 214              	.LVL24:
+ 215              	.L22:
+  22:Core/Src/Components/Motor.c ****       break;
+ 216              		.loc 1 22 7 is_stmt 1 view .LVU37
+ 217 001c 0122     		movs	r2, #1
+ 218 001e 0949     		ldr	r1, .L26+4
+ 219 0020 0948     		ldr	r0, .L26+8
+ 220              	.LVL25:
+  22:Core/Src/Components/Motor.c ****       break;
+ 221              		.loc 1 22 7 is_stmt 0 view .LVU38
+ 222 0022 FFF7FEFF 		bl	SetupTIMHandle
+ 223              	.LVL26:
+  23:Core/Src/Components/Motor.c ****     case BackLeft:
+ 224              		.loc 1 23 7 is_stmt 1 view .LVU39
+ 225 0026 F8E7     		b	.L17
+ 226              	.LVL27:
+ 227              	.L21:
+  25:Core/Src/Components/Motor.c ****       break;
+ 228              		.loc 1 25 7 view .LVU40
+ 229 0028 0122     		movs	r2, #1
+ 230 002a 0849     		ldr	r1, .L26+12
+ 231 002c 0848     		ldr	r0, .L26+16
+ 232              	.LVL28:
+ARM GAS  /tmp/ccxOoROk.s 			page 6
+
+
+  25:Core/Src/Components/Motor.c ****       break;
+ 233              		.loc 1 25 7 is_stmt 0 view .LVU41
+ 234 002e FFF7FEFF 		bl	SetupTIMHandle
+ 235              	.LVL29:
+  26:Core/Src/Components/Motor.c ****     case BackRight:
+ 236              		.loc 1 26 7 is_stmt 1 view .LVU42
+ 237 0032 F2E7     		b	.L17
+ 238              	.LVL30:
+ 239              	.L19:
+  28:Core/Src/Components/Motor.c ****       break;
+ 240              		.loc 1 28 7 view .LVU43
+ 241 0034 0122     		movs	r2, #1
+ 242 0036 0749     		ldr	r1, .L26+20
+ 243 0038 0748     		ldr	r0, .L26+24
+ 244              	.LVL31:
+  28:Core/Src/Components/Motor.c ****       break;
+ 245              		.loc 1 28 7 is_stmt 0 view .LVU44
+ 246 003a FFF7FEFF 		bl	SetupTIMHandle
+ 247              	.LVL32:
+  29:Core/Src/Components/Motor.c ****   } 
+ 248              		.loc 1 29 7 is_stmt 1 view .LVU45
+  31:Core/Src/Components/Motor.c **** 
+ 249              		.loc 1 31 1 is_stmt 0 view .LVU46
+ 250 003e ECE7     		b	.L17
+ 251              	.L27:
+ 252              		.align	2
+ 253              	.L26:
+ 254 0040 00000000 		.word	htim2
+ 255 0044 00040040 		.word	1073742848
+ 256 0048 00000000 		.word	htim3
+ 257 004c 00080040 		.word	1073743872
+ 258 0050 00000000 		.word	htim4
+ 259 0054 000C0040 		.word	1073744896
+ 260 0058 00000000 		.word	htim5
+ 261              		.cfi_endproc
+ 262              	.LFE224:
+ 264              		.section	.text._StopMotor,"ax",%progbits
+ 265              		.align	1
+ 266              		.global	_StopMotor
+ 267              		.syntax unified
+ 268              		.thumb
+ 269              		.thumb_func
+ 271              	_StopMotor:
+ 272              	.LVL33:
+ 273              	.LFB225:
+  33:Core/Src/Components/Motor.c ****   if (HAL_TIM_PWM_Stop(GetMotor(orientation), TIM_CHANNEL_1) != HAL_OK) Error_Handler();
+ 274              		.loc 1 33 42 is_stmt 1 view -0
+ 275              		.cfi_startproc
+ 276              		@ args = 0, pretend = 0, frame = 0
+ 277              		@ frame_needed = 0, uses_anonymous_args = 0
+  33:Core/Src/Components/Motor.c ****   if (HAL_TIM_PWM_Stop(GetMotor(orientation), TIM_CHANNEL_1) != HAL_OK) Error_Handler();
+ 278              		.loc 1 33 42 is_stmt 0 view .LVU48
+ 279 0000 08B5     		push	{r3, lr}
+ 280              	.LCFI2:
+ 281              		.cfi_def_cfa_offset 8
+ 282              		.cfi_offset 3, -8
+ 283              		.cfi_offset 14, -4
+ARM GAS  /tmp/ccxOoROk.s 			page 7
+
+
+  34:Core/Src/Components/Motor.c **** }
+ 284              		.loc 1 34 3 is_stmt 1 view .LVU49
+  34:Core/Src/Components/Motor.c **** }
+ 285              		.loc 1 34 7 is_stmt 0 view .LVU50
+ 286 0002 FFF7FEFF 		bl	GetMotor
+ 287              	.LVL34:
+  34:Core/Src/Components/Motor.c **** }
+ 288              		.loc 1 34 7 view .LVU51
+ 289 0006 0021     		movs	r1, #0
+ 290 0008 FFF7FEFF 		bl	HAL_TIM_PWM_Stop
+ 291              	.LVL35:
+  34:Core/Src/Components/Motor.c **** }
+ 292              		.loc 1 34 6 view .LVU52
+ 293 000c 00B9     		cbnz	r0, .L31
+ 294              	.L28:
+  35:Core/Src/Components/Motor.c **** 
+ 295              		.loc 1 35 1 view .LVU53
+ 296 000e 08BD     		pop	{r3, pc}
+ 297              	.L31:
+  34:Core/Src/Components/Motor.c **** }
+ 298              		.loc 1 34 73 is_stmt 1 discriminator 1 view .LVU54
+ 299 0010 FFF7FEFF 		bl	Error_Handler
+ 300              	.LVL36:
+  35:Core/Src/Components/Motor.c **** 
+ 301              		.loc 1 35 1 is_stmt 0 discriminator 1 view .LVU55
+ 302 0014 FBE7     		b	.L28
+ 303              		.cfi_endproc
+ 304              	.LFE225:
+ 306              		.global	Motor
+ 307              		.section	.data.Motor,"aw"
+ 308              		.align	2
+ 311              	Motor:
+ 312 0000 00000000 		.word	InitializeMotor
+ 313 0004 00000000 		.word	_ChangeSpeed
+ 314 0008 00000000 		.word	_StopMotor
+ 315              		.text
+ 316              	.Letext0:
+ 317              		.file 2 "/opt/gcc-arm-none-eabi/arm-none-eabi/include/machine/_default_types.h"
+ 318              		.file 3 "/opt/gcc-arm-none-eabi/arm-none-eabi/include/sys/_stdint.h"
+ 319              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
+ 320              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 321              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 322              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 323              		.file 8 "Core/Inc/Communication/tim.h"
+ 324              		.file 9 "Core/Inc/Components/Motor.h"
+ 325              		.file 10 "Core/Inc/main.h"
+ARM GAS  /tmp/ccxOoROk.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 Motor.c
+     /tmp/ccxOoROk.s:21     .text.GetMotor:00000000 $t
+     /tmp/ccxOoROk.s:26     .text.GetMotor:00000000 GetMotor
+     /tmp/ccxOoROk.s:39     .text.GetMotor:00000008 $d
+     /tmp/ccxOoROk.s:43     .text.GetMotor:0000000c $t
+     /tmp/ccxOoROk.s:81     .text.GetMotor:00000020 $d
+     /tmp/ccxOoROk.s:93     .text._ChangeSpeed:00000000 $t
+     /tmp/ccxOoROk.s:99     .text._ChangeSpeed:00000000 _ChangeSpeed
+     /tmp/ccxOoROk.s:167    .text._ChangeSpeed:0000003c $d
+     /tmp/ccxOoROk.s:172    .text.InitializeMotor:00000000 $t
+     /tmp/ccxOoROk.s:178    .text.InitializeMotor:00000000 InitializeMotor
+     /tmp/ccxOoROk.s:196    .text.InitializeMotor:0000000a $d
+     /tmp/ccxOoROk.s:200    .text.InitializeMotor:0000000e $t
+     /tmp/ccxOoROk.s:254    .text.InitializeMotor:00000040 $d
+     /tmp/ccxOoROk.s:265    .text._StopMotor:00000000 $t
+     /tmp/ccxOoROk.s:271    .text._StopMotor:00000000 _StopMotor
+     /tmp/ccxOoROk.s:311    .data.Motor:00000000 Motor
+     /tmp/ccxOoROk.s:308    .data.Motor:00000000 $d
+
+UNDEFINED SYMBOLS
+htim4
+htim5
+htim2
+htim3
+__aeabi_ui2d
+__aeabi_ddiv
+__aeabi_dmul
+__aeabi_d2iz
+SetupTIMHandle
+HAL_TIM_PWM_Stop
+Error_Handler

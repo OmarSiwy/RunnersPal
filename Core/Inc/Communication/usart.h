@@ -16,8 +16,6 @@
   *
   ******************************************************************************
   */
-/* USER CODE END Header */
-/* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __USART_H__
 #define __USART_H__
 
@@ -25,28 +23,20 @@
 extern "C" {
 #endif
 
-/* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
-/* USER CODE BEGIN Includes */
-
-/* USER CODE END Includes */
+#include <stdio.h>
 
 extern UART_HandleTypeDef huart2;
 
-/* USER CODE BEGIN Private defines */
-
-/* USER CODE END Private defines */
-
 void MX_USART2_UART_Init(void);
 
-/* USER CODE BEGIN Prototypes */
+// Printing Setup:
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
 
-/* USER CODE END Prototypes */
+PUTCHAR_PROTOTYPE;
 
 #ifdef __cplusplus
 }
 #endif
 
 #endif /* __USART_H__ */
-

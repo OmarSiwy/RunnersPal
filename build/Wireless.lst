@@ -1,0 +1,459 @@
+ARM GAS  /tmp/ccPGVQ5V.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"Wireless.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/Components/Wireless.c"
+  20              		.section	.rodata._initialize.str1.4,"aMS",%progbits,1
+  21              		.align	2
+  22              	.LC0:
+  23 0000 496E6974 		.ascii	"Initiliazed: \000"
+  23      696C6961 
+  23      7A65643A 
+  23      2000
+  24              		.section	.text._initialize,"ax",%progbits
+  25              		.align	1
+  26              		.global	_initialize
+  27              		.syntax unified
+  28              		.thumb
+  29              		.thumb_func
+  31              	_initialize:
+  32              	.LFB225:
+   1:Core/Src/Components/Wireless.c **** #include "Components/Wireless.h"
+   2:Core/Src/Components/Wireless.c **** #include "Communication/usart.h"
+   3:Core/Src/Components/Wireless.c **** 
+   4:Core/Src/Components/Wireless.c **** 
+   5:Core/Src/Components/Wireless.c **** 
+   6:Core/Src/Components/Wireless.c **** static GPIOCONFIG WirelessArray[] = {
+   7:Core/Src/Components/Wireless.c ****   {.Init = {.Pin = GPIO_PIN_7, .Mode = GPIO_MODE_OUTPUT_PP, .Pull = GPIO_NOPULL},
+   8:Core/Src/Components/Wireless.c ****    .port = GPIOA},
+   9:Core/Src/Components/Wireless.c ****   {.Init = {.Pin = GPIO_PIN_6, .Mode = GPIO_MODE_OUTPUT_PP, .Pull = GPIO_NOPULL},
+  10:Core/Src/Components/Wireless.c ****    .port = GPIOB},
+  11:Core/Src/Components/Wireless.c ****   {.Init = {.Pin = GPIO_PIN_7, .Mode = GPIO_MODE_OUTPUT_PP, .Pull = GPIO_NOPULL},
+  12:Core/Src/Components/Wireless.c ****    .port = GPIOC},
+  13:Core/Src/Components/Wireless.c ****   {.Init = {.Pin = GPIO_PIN_9, .Mode = GPIO_MODE_OUTPUT_PP, .Pull = GPIO_NOPULL},
+  14:Core/Src/Components/Wireless.c ****    .port = GPIOA},
+  15:Core/Src/Components/Wireless.c ****   {.Init = {.Pin = GPIO_PIN_8, .Mode = GPIO_MODE_INPUT, .Pull = GPIO_NOPULL},
+  16:Core/Src/Components/Wireless.c ****    .port = GPIOA},
+  17:Core/Src/Components/Wireless.c ****   {.Init = {.Pin = GPIO_PIN_10, .Mode = GPIO_MODE_INPUT, .Pull = GPIO_NOPULL},
+  18:Core/Src/Components/Wireless.c ****    .port = GPIOB},
+  19:Core/Src/Components/Wireless.c ****   {.Init = {.Pin = GPIO_PIN_4, .Mode = GPIO_MODE_INPUT, .Pull = GPIO_NOPULL},
+  20:Core/Src/Components/Wireless.c ****    .port = GPIOB},
+  21:Core/Src/Components/Wireless.c ****   {.Init = {.Pin = GPIO_PIN_5, .Mode = GPIO_MODE_INPUT, .Pull = GPIO_NOPULL},
+  22:Core/Src/Components/Wireless.c ****    .port = GPIOB}
+  23:Core/Src/Components/Wireless.c **** };
+ARM GAS  /tmp/ccPGVQ5V.s 			page 2
+
+
+  24:Core/Src/Components/Wireless.c **** 
+  25:Core/Src/Components/Wireless.c **** static GPIO_TypeDef* ChoosePortGroup(bool read, int number) {
+  26:Core/Src/Components/Wireless.c ****   int indent = 0;
+  27:Core/Src/Components/Wireless.c ****   if (read) indent+=4;
+  28:Core/Src/Components/Wireless.c ****   return WirelessArray[indent+number].port;
+  29:Core/Src/Components/Wireless.c **** }
+  30:Core/Src/Components/Wireless.c **** 
+  31:Core/Src/Components/Wireless.c **** static uint16_t ChoosePortName(bool read, int number) {
+  32:Core/Src/Components/Wireless.c ****   int indent = 0;
+  33:Core/Src/Components/Wireless.c ****   if (read) indent+=4;
+  34:Core/Src/Components/Wireless.c ****   return WirelessArray[indent+number].Init.Pin;
+  35:Core/Src/Components/Wireless.c **** }
+  36:Core/Src/Components/Wireless.c **** 
+  37:Core/Src/Components/Wireless.c **** 
+  38:Core/Src/Components/Wireless.c **** void _initialize() {
+  33              		.loc 1 38 20 view -0
+  34              		.cfi_startproc
+  35              		@ args = 0, pretend = 0, frame = 0
+  36              		@ frame_needed = 0, uses_anonymous_args = 0
+  37 0000 10B5     		push	{r4, lr}
+  38              	.LCFI0:
+  39              		.cfi_def_cfa_offset 8
+  40              		.cfi_offset 4, -8
+  41              		.cfi_offset 14, -4
+  39:Core/Src/Components/Wireless.c ****   // Setup TIM Timer
+  40:Core/Src/Components/Wireless.c ****   SetupTIMHandle(&htim1, TIM1, false);
+  42              		.loc 1 40 3 view .LVU1
+  43 0002 084C     		ldr	r4, .L3
+  44 0004 0022     		movs	r2, #0
+  45 0006 0849     		ldr	r1, .L3+4
+  46 0008 2046     		mov	r0, r4
+  47 000a FFF7FEFF 		bl	SetupTIMHandle
+  48              	.LVL0:
+  41:Core/Src/Components/Wireless.c ****   HAL_TIM_Base_Start(&htim1);
+  49              		.loc 1 41 3 view .LVU2
+  50 000e 2046     		mov	r0, r4
+  51 0010 FFF7FEFF 		bl	HAL_TIM_Base_Start
+  52              	.LVL1:
+  42:Core/Src/Components/Wireless.c ****   // Setup Output/Input Pins
+  43:Core/Src/Components/Wireless.c ****   SetupGPIOHandle(WirelessArray, 8);
+  53              		.loc 1 43 3 view .LVU3
+  54 0014 0821     		movs	r1, #8
+  55 0016 0548     		ldr	r0, .L3+8
+  56 0018 FFF7FEFF 		bl	SetupGPIOHandle
+  57              	.LVL2:
+  44:Core/Src/Components/Wireless.c ****   printf("Initiliazed: ");
+  58              		.loc 1 44 3 view .LVU4
+  59 001c 0448     		ldr	r0, .L3+12
+  60 001e FFF7FEFF 		bl	printf
+  61              	.LVL3:
+  45:Core/Src/Components/Wireless.c **** }
+  62              		.loc 1 45 1 is_stmt 0 view .LVU5
+  63 0022 10BD     		pop	{r4, pc}
+  64              	.L4:
+  65              		.align	2
+  66              	.L3:
+  67 0024 00000000 		.word	htim1
+ARM GAS  /tmp/ccPGVQ5V.s 			page 3
+
+
+  68 0028 00000140 		.word	1073807360
+  69 002c 00000000 		.word	WirelessArray
+  70 0030 00000000 		.word	.LC0
+  71              		.cfi_endproc
+  72              	.LFE225:
+  74              		.section	.rodata._recievemessage.str1.4,"aMS",%progbits,1
+  75              		.align	2
+  76              	.LC1:
+  77 0000 43686F6F 		.ascii	"ChoosePortName(1, bit-1)\000"
+  77      7365506F 
+  77      72744E61 
+  77      6D652831 
+  77      2C206269 
+  78 0019 000000   		.align	2
+  79              	.LC2:
+  80 001c 28475049 		.ascii	"(GPIO_TypeDef*)ChoosePortGroup(1, bit-1)\000"
+  80      4F5F5479 
+  80      70654465 
+  80      662A2943 
+  80      686F6F73 
+  81 0045 000000   		.align	2
+  82              	.LC3:
+  83 0048 25732C20 		.ascii	"%s, %s, has been read\000"
+  83      25732C20 
+  83      68617320 
+  83      6265656E 
+  83      20726561 
+  84              		.section	.text._recievemessage,"ax",%progbits
+  85              		.align	1
+  86              		.global	_recievemessage
+  87              		.syntax unified
+  88              		.thumb
+  89              		.thumb_func
+  91              	_recievemessage:
+  92              	.LFB227:
+  46:Core/Src/Components/Wireless.c **** 
+  47:Core/Src/Components/Wireless.c **** void _sendmessage(int value) {
+  48:Core/Src/Components/Wireless.c ****   int Divider = 1;
+  49:Core/Src/Components/Wireless.c ****   int Remainder = 10;
+  50:Core/Src/Components/Wireless.c ****   while (Remainder < value) {
+  51:Core/Src/Components/Wireless.c ****     int Digit = value % Remainder / Divider;
+  52:Core/Src/Components/Wireless.c **** 
+  53:Core/Src/Components/Wireless.c ****     // Turn on GPIO Pins according to numbers
+  54:Core/Src/Components/Wireless.c ****     int bit = 1;
+  55:Core/Src/Components/Wireless.c ****     while (bit <= 4) {
+  56:Core/Src/Components/Wireless.c ****       GPIOWrite(
+  57:Core/Src/Components/Wireless.c ****         (GPIO_TypeDef*)ChoosePortGroup(false, bit-1), 
+  58:Core/Src/Components/Wireless.c ****         ChoosePortName(false, bit-1), 
+  59:Core/Src/Components/Wireless.c ****         1 << bit & Digit ? GPIO_PIN_SET : GPIO_PIN_RESET
+  60:Core/Src/Components/Wireless.c ****       );
+  61:Core/Src/Components/Wireless.c ****       bit++;
+  62:Core/Src/Components/Wireless.c ****     }
+  63:Core/Src/Components/Wireless.c ****     HAL_Delay(10);
+  64:Core/Src/Components/Wireless.c ****   }
+  65:Core/Src/Components/Wireless.c **** }
+  66:Core/Src/Components/Wireless.c **** 
+  67:Core/Src/Components/Wireless.c **** int _recievemessage() {
+ARM GAS  /tmp/ccPGVQ5V.s 			page 4
+
+
+  93              		.loc 1 67 23 is_stmt 1 view -0
+  94              		.cfi_startproc
+  95              		@ args = 0, pretend = 0, frame = 0
+  96              		@ frame_needed = 0, uses_anonymous_args = 0
+  97 0000 08B5     		push	{r3, lr}
+  98              	.LCFI1:
+  99              		.cfi_def_cfa_offset 8
+ 100              		.cfi_offset 3, -8
+ 101              		.cfi_offset 14, -4
+ 102              	.L6:
+  68:Core/Src/Components/Wireless.c ****   //int StartTime = __HAL_TIM_GET_COUNTER(&htim1);
+  69:Core/Src/Components/Wireless.c ****   //while(__HAL_TIM_GET_COUNTER(&htim1) - StartTime < TimeFrame) {
+  70:Core/Src/Components/Wireless.c ****   //  
+  71:Core/Src/Components/Wireless.c ****   //}
+  72:Core/Src/Components/Wireless.c ****   
+  73:Core/Src/Components/Wireless.c ****   int bit = 1;
+  74:Core/Src/Components/Wireless.c ****   int output = 0;
+  75:Core/Src/Components/Wireless.c ****   while (bit <= 4) {
+ 103              		.loc 1 75 14 view .LVU7
+ 104              	.LBB2:
+  76:Core/Src/Components/Wireless.c ****     int bitValue = GPIORead(
+ 105              		.loc 1 76 5 view .LVU8
+ 106              		.loc 1 76 20 is_stmt 0 view .LVU9
+ 107 0002 034A     		ldr	r2, .L8
+ 108 0004 0349     		ldr	r1, .L8+4
+ 109 0006 0448     		ldr	r0, .L8+8
+ 110 0008 FFF7FEFF 		bl	printf
+ 111              	.LVL4:
+  77:Core/Src/Components/Wireless.c ****     (GPIO_TypeDef*)ChoosePortGroup(true, bit-1), 
+  78:Core/Src/Components/Wireless.c ****     ChoosePortName(true, bit-1) );
+  79:Core/Src/Components/Wireless.c ****     output |= bitValue << bit;
+ 112              		.loc 1 79 5 is_stmt 1 view .LVU10
+ 113 000c F9E7     		b	.L6
+ 114              	.L9:
+ 115 000e 00BF     		.align	2
+ 116              	.L8:
+ 117 0010 00000000 		.word	.LC1
+ 118 0014 1C000000 		.word	.LC2
+ 119 0018 48000000 		.word	.LC3
+ 120              	.LBE2:
+ 121              		.cfi_endproc
+ 122              	.LFE227:
+ 124              		.section	.rodata._sendmessage.str1.4,"aMS",%progbits,1
+ 125              		.align	2
+ 126              	.LC4:
+ 127 0000 31203C3C 		.ascii	"1 << bit & Digit ? GPIO_PIN_SET : GPIO_PIN_RESET\000"
+ 127      20626974 
+ 127      20262044 
+ 127      69676974 
+ 127      203F2047 
+ 128 0031 000000   		.align	2
+ 129              	.LC5:
+ 130 0034 43686F6F 		.ascii	"ChoosePortName(0, bit-1)\000"
+ 130      7365506F 
+ 130      72744E61 
+ 130      6D652830 
+ 130      2C206269 
+ARM GAS  /tmp/ccPGVQ5V.s 			page 5
+
+
+ 131 004d 000000   		.align	2
+ 132              	.LC6:
+ 133 0050 28475049 		.ascii	"(GPIO_TypeDef*)ChoosePortGroup(0, bit-1)\000"
+ 133      4F5F5479 
+ 133      70654465 
+ 133      662A2943 
+ 133      686F6F73 
+ 134 0079 000000   		.align	2
+ 135              	.LC7:
+ 136 007c 25732C20 		.ascii	"%s, %s, has been turned %s\012\000"
+ 136      25732C20 
+ 136      68617320 
+ 136      6265656E 
+ 136      20747572 
+ 137              		.section	.text._sendmessage,"ax",%progbits
+ 138              		.align	1
+ 139              		.global	_sendmessage
+ 140              		.syntax unified
+ 141              		.thumb
+ 142              		.thumb_func
+ 144              	_sendmessage:
+ 145              	.LVL5:
+ 146              	.LFB226:
+  47:Core/Src/Components/Wireless.c ****   int Divider = 1;
+ 147              		.loc 1 47 30 view -0
+ 148              		.cfi_startproc
+ 149              		@ args = 0, pretend = 0, frame = 0
+ 150              		@ frame_needed = 0, uses_anonymous_args = 0
+  47:Core/Src/Components/Wireless.c ****   int Divider = 1;
+ 151              		.loc 1 47 30 is_stmt 0 view .LVU12
+ 152 0000 38B5     		push	{r3, r4, r5, lr}
+ 153              	.LCFI2:
+ 154              		.cfi_def_cfa_offset 16
+ 155              		.cfi_offset 3, -16
+ 156              		.cfi_offset 4, -12
+ 157              		.cfi_offset 5, -8
+ 158              		.cfi_offset 14, -4
+ 159 0002 0546     		mov	r5, r0
+  48:Core/Src/Components/Wireless.c ****   int Remainder = 10;
+ 160              		.loc 1 48 3 is_stmt 1 view .LVU13
+ 161              	.LVL6:
+  49:Core/Src/Components/Wireless.c ****   while (Remainder < value) {
+ 162              		.loc 1 49 3 view .LVU14
+  50:Core/Src/Components/Wireless.c ****     int Digit = value % Remainder / Divider;
+ 163              		.loc 1 50 3 view .LVU15
+  50:Core/Src/Components/Wireless.c ****     int Digit = value % Remainder / Divider;
+ 164              		.loc 1 50 9 is_stmt 0 view .LVU16
+ 165 0004 0BE0     		b	.L11
+ 166              	.LVL7:
+ 167              	.L12:
+ 168              	.LBB3:
+  56:Core/Src/Components/Wireless.c ****         (GPIO_TypeDef*)ChoosePortGroup(false, bit-1), 
+ 169              		.loc 1 56 7 is_stmt 1 view .LVU17
+ 170 0006 084B     		ldr	r3, .L17
+ 171 0008 084A     		ldr	r2, .L17+4
+ 172 000a 0949     		ldr	r1, .L17+8
+ 173 000c 0948     		ldr	r0, .L17+12
+ARM GAS  /tmp/ccPGVQ5V.s 			page 6
+
+
+ 174 000e FFF7FEFF 		bl	printf
+ 175              	.LVL8:
+  61:Core/Src/Components/Wireless.c ****     }
+ 176              		.loc 1 61 7 view .LVU18
+  61:Core/Src/Components/Wireless.c ****     }
+ 177              		.loc 1 61 10 is_stmt 0 view .LVU19
+ 178 0012 0134     		adds	r4, r4, #1
+ 179              	.LVL9:
+ 180              	.L13:
+  55:Core/Src/Components/Wireless.c ****       GPIOWrite(
+ 181              		.loc 1 55 16 is_stmt 1 view .LVU20
+ 182 0014 042C     		cmp	r4, #4
+ 183 0016 F6DD     		ble	.L12
+  63:Core/Src/Components/Wireless.c ****   }
+ 184              		.loc 1 63 5 view .LVU21
+ 185 0018 0A20     		movs	r0, #10
+ 186 001a FFF7FEFF 		bl	HAL_Delay
+ 187              	.LVL10:
+ 188              	.L11:
+  63:Core/Src/Components/Wireless.c ****   }
+ 189              		.loc 1 63 5 is_stmt 0 view .LVU22
+ 190              	.LBE3:
+  50:Core/Src/Components/Wireless.c ****     int Digit = value % Remainder / Divider;
+ 191              		.loc 1 50 20 is_stmt 1 view .LVU23
+ 192 001e 0A2D     		cmp	r5, #10
+ 193 0020 01DD     		ble	.L16
+ 194              	.LBB4:
+  54:Core/Src/Components/Wireless.c ****     while (bit <= 4) {
+ 195              		.loc 1 54 9 is_stmt 0 view .LVU24
+ 196 0022 0124     		movs	r4, #1
+ 197 0024 F6E7     		b	.L13
+ 198              	.L16:
+ 199              	.LBE4:
+  65:Core/Src/Components/Wireless.c **** 
+ 200              		.loc 1 65 1 view .LVU25
+ 201 0026 38BD     		pop	{r3, r4, r5, pc}
+ 202              	.LVL11:
+ 203              	.L18:
+  65:Core/Src/Components/Wireless.c **** 
+ 204              		.loc 1 65 1 view .LVU26
+ 205              		.align	2
+ 206              	.L17:
+ 207 0028 00000000 		.word	.LC4
+ 208 002c 34000000 		.word	.LC5
+ 209 0030 50000000 		.word	.LC6
+ 210 0034 7C000000 		.word	.LC7
+ 211              		.cfi_endproc
+ 212              	.LFE226:
+ 214              		.global	Wireless
+ 215              		.section	.data.Wireless,"aw"
+ 216              		.align	2
+ 219              	Wireless:
+ 220 0000 00000000 		.word	_initialize
+ 221 0004 00000000 		.word	_sendmessage
+ 222 0008 00000000 		.word	_recievemessage
+ 223              		.section	.data.WirelessArray,"aw"
+ 224              		.align	2
+ARM GAS  /tmp/ccPGVQ5V.s 			page 7
+
+
+ 227              	WirelessArray:
+ 228 0000 80000000 		.word	128
+ 229 0004 01000000 		.word	1
+ 230 0008 00000000 		.word	0
+ 231 000c 00000000 		.space	8
+ 231      00000000 
+ 232 0014 00000240 		.word	1073872896
+ 233 0018 40000000 		.word	64
+ 234 001c 01000000 		.word	1
+ 235 0020 00000000 		.word	0
+ 236 0024 00000000 		.space	8
+ 236      00000000 
+ 237 002c 00040240 		.word	1073873920
+ 238 0030 80000000 		.word	128
+ 239 0034 01000000 		.word	1
+ 240 0038 00000000 		.word	0
+ 241 003c 00000000 		.space	8
+ 241      00000000 
+ 242 0044 00080240 		.word	1073874944
+ 243 0048 00020000 		.word	512
+ 244 004c 01000000 		.word	1
+ 245 0050 00000000 		.word	0
+ 246 0054 00000000 		.space	8
+ 246      00000000 
+ 247 005c 00000240 		.word	1073872896
+ 248 0060 00010000 		.word	256
+ 249 0064 00000000 		.word	0
+ 250 0068 00000000 		.word	0
+ 251 006c 00000000 		.space	8
+ 251      00000000 
+ 252 0074 00000240 		.word	1073872896
+ 253 0078 00040000 		.word	1024
+ 254 007c 00000000 		.word	0
+ 255 0080 00000000 		.word	0
+ 256 0084 00000000 		.space	8
+ 256      00000000 
+ 257 008c 00040240 		.word	1073873920
+ 258 0090 10000000 		.word	16
+ 259 0094 00000000 		.word	0
+ 260 0098 00000000 		.word	0
+ 261 009c 00000000 		.space	8
+ 261      00000000 
+ 262 00a4 00040240 		.word	1073873920
+ 263 00a8 20000000 		.word	32
+ 264 00ac 00000000 		.word	0
+ 265 00b0 00000000 		.word	0
+ 266 00b4 00000000 		.space	8
+ 266      00000000 
+ 267 00bc 00040240 		.word	1073873920
+ 268              		.text
+ 269              	.Letext0:
+ 270              		.file 2 "/opt/gcc-arm-none-eabi/arm-none-eabi/include/machine/_default_types.h"
+ 271              		.file 3 "/opt/gcc-arm-none-eabi/arm-none-eabi/include/sys/_stdint.h"
+ 272              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
+ 273              		.file 5 "/opt/gcc-arm-none-eabi/lib/gcc/arm-none-eabi/12.3.1/include/stddef.h"
+ 274              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 275              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ARM GAS  /tmp/ccPGVQ5V.s 			page 8
+
+
+ 276              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 277              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 278              		.file 10 "Core/Inc/Communication/gpio.h"
+ 279              		.file 11 "Core/Inc/Components/Wireless.h"
+ 280              		.file 12 "Core/Inc/Communication/tim.h"
+ 281              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 282              		.file 14 "/opt/gcc-arm-none-eabi/arm-none-eabi/include/stdio.h"
+ARM GAS  /tmp/ccPGVQ5V.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 Wireless.c
+     /tmp/ccPGVQ5V.s:21     .rodata._initialize.str1.4:00000000 $d
+     /tmp/ccPGVQ5V.s:25     .text._initialize:00000000 $t
+     /tmp/ccPGVQ5V.s:31     .text._initialize:00000000 _initialize
+     /tmp/ccPGVQ5V.s:67     .text._initialize:00000024 $d
+     /tmp/ccPGVQ5V.s:227    .data.WirelessArray:00000000 WirelessArray
+     /tmp/ccPGVQ5V.s:75     .rodata._recievemessage.str1.4:00000000 $d
+     /tmp/ccPGVQ5V.s:85     .text._recievemessage:00000000 $t
+     /tmp/ccPGVQ5V.s:91     .text._recievemessage:00000000 _recievemessage
+     /tmp/ccPGVQ5V.s:117    .text._recievemessage:00000010 $d
+     /tmp/ccPGVQ5V.s:125    .rodata._sendmessage.str1.4:00000000 $d
+     /tmp/ccPGVQ5V.s:138    .text._sendmessage:00000000 $t
+     /tmp/ccPGVQ5V.s:144    .text._sendmessage:00000000 _sendmessage
+     /tmp/ccPGVQ5V.s:207    .text._sendmessage:00000028 $d
+     /tmp/ccPGVQ5V.s:219    .data.Wireless:00000000 Wireless
+     /tmp/ccPGVQ5V.s:216    .data.Wireless:00000000 $d
+     /tmp/ccPGVQ5V.s:224    .data.WirelessArray:00000000 $d
+
+UNDEFINED SYMBOLS
+SetupTIMHandle
+HAL_TIM_Base_Start
+SetupGPIOHandle
+printf
+htim1
+HAL_Delay

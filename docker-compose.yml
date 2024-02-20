@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  build-only:
+    build: .
+    image: stm32_project_build:latest
+    volumes:
+      - .:/project
+    command: /bin/bash -c "compiledb make -j16 all"

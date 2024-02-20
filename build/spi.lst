@@ -1,0 +1,586 @@
+ARM GAS  /tmp/ccYJla7i.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"spi.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/Communication/spi.c"
+  20              		.section	.text.MX_SPI1_Init,"ax",%progbits
+  21              		.align	1
+  22              		.global	MX_SPI1_Init
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	MX_SPI1_Init:
+  28              	.LFB220:
+   1:Core/Src/Communication/spi.c **** /* USER CODE BEGIN Header */
+   2:Core/Src/Communication/spi.c **** /**
+   3:Core/Src/Communication/spi.c ****   ******************************************************************************
+   4:Core/Src/Communication/spi.c ****   * @file    spi.c
+   5:Core/Src/Communication/spi.c ****   * @brief   This file provides code for the configuration
+   6:Core/Src/Communication/spi.c ****   *          of the SPI instances.
+   7:Core/Src/Communication/spi.c ****   ******************************************************************************
+   8:Core/Src/Communication/spi.c ****   * @attention
+   9:Core/Src/Communication/spi.c ****   *
+  10:Core/Src/Communication/spi.c ****   * Copyright (c) 2024 STMicroelectronics.
+  11:Core/Src/Communication/spi.c ****   * All rights reserved.
+  12:Core/Src/Communication/spi.c ****   *
+  13:Core/Src/Communication/spi.c ****   * This software is licensed under terms that can be found in the LICENSE file
+  14:Core/Src/Communication/spi.c ****   * in the root directory of this software component.
+  15:Core/Src/Communication/spi.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  16:Core/Src/Communication/spi.c ****   *
+  17:Core/Src/Communication/spi.c ****   ******************************************************************************
+  18:Core/Src/Communication/spi.c ****   */
+  19:Core/Src/Communication/spi.c **** /* USER CODE END Header */
+  20:Core/Src/Communication/spi.c **** /* Includes ------------------------------------------------------------------*/
+  21:Core/Src/Communication/spi.c **** #include "Communication/spi.h"
+  22:Core/Src/Communication/spi.c **** 
+  23:Core/Src/Communication/spi.c **** /* USER CODE BEGIN 0 */
+  24:Core/Src/Communication/spi.c **** 
+  25:Core/Src/Communication/spi.c **** /* USER CODE END 0 */
+  26:Core/Src/Communication/spi.c **** 
+  27:Core/Src/Communication/spi.c **** SPI_HandleTypeDef hspi1;
+  28:Core/Src/Communication/spi.c **** 
+  29:Core/Src/Communication/spi.c **** /* SPI1 init function */
+  30:Core/Src/Communication/spi.c **** void MX_SPI1_Init(void)
+ARM GAS  /tmp/ccYJla7i.s 			page 2
+
+
+  31:Core/Src/Communication/spi.c **** {
+  29              		.loc 1 31 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+  32:Core/Src/Communication/spi.c **** 
+  33:Core/Src/Communication/spi.c ****   /* USER CODE BEGIN SPI1_Init 0 */
+  34:Core/Src/Communication/spi.c **** 
+  35:Core/Src/Communication/spi.c ****   /* USER CODE END SPI1_Init 0 */
+  36:Core/Src/Communication/spi.c **** 
+  37:Core/Src/Communication/spi.c ****   /* USER CODE BEGIN SPI1_Init 1 */
+  38:Core/Src/Communication/spi.c **** 
+  39:Core/Src/Communication/spi.c ****   /* USER CODE END SPI1_Init 1 */
+  40:Core/Src/Communication/spi.c ****   hspi1.Instance = SPI1;
+  38              		.loc 1 40 3 view .LVU1
+  39              		.loc 1 40 18 is_stmt 0 view .LVU2
+  40 0002 0D48     		ldr	r0, .L5
+  41 0004 0D4B     		ldr	r3, .L5+4
+  42 0006 0360     		str	r3, [r0]
+  41:Core/Src/Communication/spi.c ****   hspi1.Init.Mode = SPI_MODE_MASTER;
+  43              		.loc 1 41 3 is_stmt 1 view .LVU3
+  44              		.loc 1 41 19 is_stmt 0 view .LVU4
+  45 0008 4FF48273 		mov	r3, #260
+  46 000c 4360     		str	r3, [r0, #4]
+  42:Core/Src/Communication/spi.c ****   hspi1.Init.Direction = SPI_DIRECTION_2LINES;
+  47              		.loc 1 42 3 is_stmt 1 view .LVU5
+  48              		.loc 1 42 24 is_stmt 0 view .LVU6
+  49 000e 0023     		movs	r3, #0
+  50 0010 8360     		str	r3, [r0, #8]
+  43:Core/Src/Communication/spi.c ****   hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
+  51              		.loc 1 43 3 is_stmt 1 view .LVU7
+  52              		.loc 1 43 23 is_stmt 0 view .LVU8
+  53 0012 C360     		str	r3, [r0, #12]
+  44:Core/Src/Communication/spi.c ****   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
+  54              		.loc 1 44 3 is_stmt 1 view .LVU9
+  55              		.loc 1 44 26 is_stmt 0 view .LVU10
+  56 0014 0361     		str	r3, [r0, #16]
+  45:Core/Src/Communication/spi.c ****   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+  57              		.loc 1 45 3 is_stmt 1 view .LVU11
+  58              		.loc 1 45 23 is_stmt 0 view .LVU12
+  59 0016 4361     		str	r3, [r0, #20]
+  46:Core/Src/Communication/spi.c ****   hspi1.Init.NSS = SPI_NSS_SOFT;
+  60              		.loc 1 46 3 is_stmt 1 view .LVU13
+  61              		.loc 1 46 18 is_stmt 0 view .LVU14
+  62 0018 4FF40072 		mov	r2, #512
+  63 001c 8261     		str	r2, [r0, #24]
+  47:Core/Src/Communication/spi.c ****   hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  64              		.loc 1 47 3 is_stmt 1 view .LVU15
+  65              		.loc 1 47 32 is_stmt 0 view .LVU16
+  66 001e C361     		str	r3, [r0, #28]
+  48:Core/Src/Communication/spi.c ****   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  67              		.loc 1 48 3 is_stmt 1 view .LVU17
+ARM GAS  /tmp/ccYJla7i.s 			page 3
+
+
+  68              		.loc 1 48 23 is_stmt 0 view .LVU18
+  69 0020 0362     		str	r3, [r0, #32]
+  49:Core/Src/Communication/spi.c ****   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
+  70              		.loc 1 49 3 is_stmt 1 view .LVU19
+  71              		.loc 1 49 21 is_stmt 0 view .LVU20
+  72 0022 4362     		str	r3, [r0, #36]
+  50:Core/Src/Communication/spi.c ****   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  73              		.loc 1 50 3 is_stmt 1 view .LVU21
+  74              		.loc 1 50 29 is_stmt 0 view .LVU22
+  75 0024 8362     		str	r3, [r0, #40]
+  51:Core/Src/Communication/spi.c ****   hspi1.Init.CRCPolynomial = 10;
+  76              		.loc 1 51 3 is_stmt 1 view .LVU23
+  77              		.loc 1 51 28 is_stmt 0 view .LVU24
+  78 0026 0A23     		movs	r3, #10
+  79 0028 C362     		str	r3, [r0, #44]
+  52:Core/Src/Communication/spi.c ****   if (HAL_SPI_Init(&hspi1) != HAL_OK)
+  80              		.loc 1 52 3 is_stmt 1 view .LVU25
+  81              		.loc 1 52 7 is_stmt 0 view .LVU26
+  82 002a FFF7FEFF 		bl	HAL_SPI_Init
+  83              	.LVL0:
+  84              		.loc 1 52 6 view .LVU27
+  85 002e 00B9     		cbnz	r0, .L4
+  86              	.L1:
+  53:Core/Src/Communication/spi.c ****   {
+  54:Core/Src/Communication/spi.c ****     Error_Handler();
+  55:Core/Src/Communication/spi.c ****   }
+  56:Core/Src/Communication/spi.c ****   /* USER CODE BEGIN SPI1_Init 2 */
+  57:Core/Src/Communication/spi.c **** 
+  58:Core/Src/Communication/spi.c ****   /* USER CODE END SPI1_Init 2 */
+  59:Core/Src/Communication/spi.c **** 
+  60:Core/Src/Communication/spi.c **** }
+  87              		.loc 1 60 1 view .LVU28
+  88 0030 08BD     		pop	{r3, pc}
+  89              	.L4:
+  54:Core/Src/Communication/spi.c ****   }
+  90              		.loc 1 54 5 is_stmt 1 view .LVU29
+  91 0032 FFF7FEFF 		bl	Error_Handler
+  92              	.LVL1:
+  93              		.loc 1 60 1 is_stmt 0 view .LVU30
+  94 0036 FBE7     		b	.L1
+  95              	.L6:
+  96              		.align	2
+  97              	.L5:
+  98 0038 00000000 		.word	hspi1
+  99 003c 00300140 		.word	1073819648
+ 100              		.cfi_endproc
+ 101              	.LFE220:
+ 103              		.section	.text.HAL_SPI_MspInit,"ax",%progbits
+ 104              		.align	1
+ 105              		.global	HAL_SPI_MspInit
+ 106              		.syntax unified
+ 107              		.thumb
+ 108              		.thumb_func
+ 110              	HAL_SPI_MspInit:
+ 111              	.LVL2:
+ 112              	.LFB221:
+  61:Core/Src/Communication/spi.c **** 
+ARM GAS  /tmp/ccYJla7i.s 			page 4
+
+
+  62:Core/Src/Communication/spi.c **** void HAL_SPI_MspInit(SPI_HandleTypeDef* spiHandle)
+  63:Core/Src/Communication/spi.c **** {
+ 113              		.loc 1 63 1 is_stmt 1 view -0
+ 114              		.cfi_startproc
+ 115              		@ args = 0, pretend = 0, frame = 32
+ 116              		@ frame_needed = 0, uses_anonymous_args = 0
+ 117              		.loc 1 63 1 is_stmt 0 view .LVU32
+ 118 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 119              	.LCFI1:
+ 120              		.cfi_def_cfa_offset 20
+ 121              		.cfi_offset 4, -20
+ 122              		.cfi_offset 5, -16
+ 123              		.cfi_offset 6, -12
+ 124              		.cfi_offset 7, -8
+ 125              		.cfi_offset 14, -4
+ 126 0002 89B0     		sub	sp, sp, #36
+ 127              	.LCFI2:
+ 128              		.cfi_def_cfa_offset 56
+  64:Core/Src/Communication/spi.c **** 
+  65:Core/Src/Communication/spi.c ****   GPIO_InitTypeDef GPIO_InitStruct = {0};
+ 129              		.loc 1 65 3 is_stmt 1 view .LVU33
+ 130              		.loc 1 65 20 is_stmt 0 view .LVU34
+ 131 0004 0023     		movs	r3, #0
+ 132 0006 0393     		str	r3, [sp, #12]
+ 133 0008 0493     		str	r3, [sp, #16]
+ 134 000a 0593     		str	r3, [sp, #20]
+ 135 000c 0693     		str	r3, [sp, #24]
+ 136 000e 0793     		str	r3, [sp, #28]
+  66:Core/Src/Communication/spi.c ****   if(spiHandle->Instance==SPI1)
+ 137              		.loc 1 66 3 is_stmt 1 view .LVU35
+ 138              		.loc 1 66 15 is_stmt 0 view .LVU36
+ 139 0010 0268     		ldr	r2, [r0]
+ 140              		.loc 1 66 5 view .LVU37
+ 141 0012 224B     		ldr	r3, .L11
+ 142 0014 9A42     		cmp	r2, r3
+ 143 0016 01D0     		beq	.L10
+ 144              	.LVL3:
+ 145              	.L7:
+  67:Core/Src/Communication/spi.c ****   {
+  68:Core/Src/Communication/spi.c ****   /* USER CODE BEGIN SPI1_MspInit 0 */
+  69:Core/Src/Communication/spi.c **** 
+  70:Core/Src/Communication/spi.c ****   /* USER CODE END SPI1_MspInit 0 */
+  71:Core/Src/Communication/spi.c ****     /* SPI1 clock enable */
+  72:Core/Src/Communication/spi.c ****     __HAL_RCC_SPI1_CLK_ENABLE();
+  73:Core/Src/Communication/spi.c **** 
+  74:Core/Src/Communication/spi.c ****     __HAL_RCC_GPIOA_CLK_ENABLE();
+  75:Core/Src/Communication/spi.c ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+  76:Core/Src/Communication/spi.c ****     /**SPI1 GPIO Configuration
+  77:Core/Src/Communication/spi.c ****     PA7     ------> SPI1_MOSI
+  78:Core/Src/Communication/spi.c ****     PB3     ------> SPI1_SCK
+  79:Core/Src/Communication/spi.c ****     PB4     ------> SPI1_MISO
+  80:Core/Src/Communication/spi.c ****     */
+  81:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Pin = GPIO_PIN_7;
+  82:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  83:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+  84:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  85:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
+ARM GAS  /tmp/ccYJla7i.s 			page 5
+
+
+  86:Core/Src/Communication/spi.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  87:Core/Src/Communication/spi.c **** 
+  88:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Pin = GPIO_PIN_3|GPIO_PIN_4;
+  89:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  90:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+  91:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+  92:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
+  93:Core/Src/Communication/spi.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  94:Core/Src/Communication/spi.c **** 
+  95:Core/Src/Communication/spi.c ****     /* SPI1 interrupt Init */
+  96:Core/Src/Communication/spi.c ****     HAL_NVIC_SetPriority(SPI1_IRQn, 5, 0);
+  97:Core/Src/Communication/spi.c ****     HAL_NVIC_EnableIRQ(SPI1_IRQn);
+  98:Core/Src/Communication/spi.c ****   /* USER CODE BEGIN SPI1_MspInit 1 */
+  99:Core/Src/Communication/spi.c **** 
+ 100:Core/Src/Communication/spi.c ****   /* USER CODE END SPI1_MspInit 1 */
+ 101:Core/Src/Communication/spi.c ****   }
+ 102:Core/Src/Communication/spi.c **** }
+ 146              		.loc 1 102 1 view .LVU38
+ 147 0018 09B0     		add	sp, sp, #36
+ 148              	.LCFI3:
+ 149              		.cfi_remember_state
+ 150              		.cfi_def_cfa_offset 20
+ 151              		@ sp needed
+ 152 001a F0BD     		pop	{r4, r5, r6, r7, pc}
+ 153              	.LVL4:
+ 154              	.L10:
+ 155              	.LCFI4:
+ 156              		.cfi_restore_state
+  72:Core/Src/Communication/spi.c **** 
+ 157              		.loc 1 72 5 is_stmt 1 view .LVU39
+ 158              	.LBB2:
+  72:Core/Src/Communication/spi.c **** 
+ 159              		.loc 1 72 5 view .LVU40
+ 160 001c 0024     		movs	r4, #0
+ 161 001e 0094     		str	r4, [sp]
+  72:Core/Src/Communication/spi.c **** 
+ 162              		.loc 1 72 5 view .LVU41
+ 163 0020 03F58433 		add	r3, r3, #67584
+ 164 0024 5A6C     		ldr	r2, [r3, #68]
+ 165 0026 42F48052 		orr	r2, r2, #4096
+ 166 002a 5A64     		str	r2, [r3, #68]
+  72:Core/Src/Communication/spi.c **** 
+ 167              		.loc 1 72 5 view .LVU42
+ 168 002c 5A6C     		ldr	r2, [r3, #68]
+ 169 002e 02F48052 		and	r2, r2, #4096
+ 170 0032 0092     		str	r2, [sp]
+  72:Core/Src/Communication/spi.c **** 
+ 171              		.loc 1 72 5 view .LVU43
+ 172 0034 009A     		ldr	r2, [sp]
+ 173              	.LBE2:
+  72:Core/Src/Communication/spi.c **** 
+ 174              		.loc 1 72 5 view .LVU44
+  74:Core/Src/Communication/spi.c ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+ 175              		.loc 1 74 5 view .LVU45
+ 176              	.LBB3:
+  74:Core/Src/Communication/spi.c ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+ 177              		.loc 1 74 5 view .LVU46
+ARM GAS  /tmp/ccYJla7i.s 			page 6
+
+
+ 178 0036 0194     		str	r4, [sp, #4]
+  74:Core/Src/Communication/spi.c ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+ 179              		.loc 1 74 5 view .LVU47
+ 180 0038 1A6B     		ldr	r2, [r3, #48]
+ 181 003a 42F00102 		orr	r2, r2, #1
+ 182 003e 1A63     		str	r2, [r3, #48]
+  74:Core/Src/Communication/spi.c ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+ 183              		.loc 1 74 5 view .LVU48
+ 184 0040 1A6B     		ldr	r2, [r3, #48]
+ 185 0042 02F00102 		and	r2, r2, #1
+ 186 0046 0192     		str	r2, [sp, #4]
+  74:Core/Src/Communication/spi.c ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+ 187              		.loc 1 74 5 view .LVU49
+ 188 0048 019A     		ldr	r2, [sp, #4]
+ 189              	.LBE3:
+  74:Core/Src/Communication/spi.c ****     __HAL_RCC_GPIOB_CLK_ENABLE();
+ 190              		.loc 1 74 5 view .LVU50
+  75:Core/Src/Communication/spi.c ****     /**SPI1 GPIO Configuration
+ 191              		.loc 1 75 5 view .LVU51
+ 192              	.LBB4:
+  75:Core/Src/Communication/spi.c ****     /**SPI1 GPIO Configuration
+ 193              		.loc 1 75 5 view .LVU52
+ 194 004a 0294     		str	r4, [sp, #8]
+  75:Core/Src/Communication/spi.c ****     /**SPI1 GPIO Configuration
+ 195              		.loc 1 75 5 view .LVU53
+ 196 004c 1A6B     		ldr	r2, [r3, #48]
+ 197 004e 42F00202 		orr	r2, r2, #2
+ 198 0052 1A63     		str	r2, [r3, #48]
+  75:Core/Src/Communication/spi.c ****     /**SPI1 GPIO Configuration
+ 199              		.loc 1 75 5 view .LVU54
+ 200 0054 1B6B     		ldr	r3, [r3, #48]
+ 201 0056 03F00203 		and	r3, r3, #2
+ 202 005a 0293     		str	r3, [sp, #8]
+  75:Core/Src/Communication/spi.c ****     /**SPI1 GPIO Configuration
+ 203              		.loc 1 75 5 view .LVU55
+ 204 005c 029B     		ldr	r3, [sp, #8]
+ 205              	.LBE4:
+  75:Core/Src/Communication/spi.c ****     /**SPI1 GPIO Configuration
+ 206              		.loc 1 75 5 view .LVU56
+  81:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 207              		.loc 1 81 5 view .LVU57
+  81:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 208              		.loc 1 81 25 is_stmt 0 view .LVU58
+ 209 005e 8023     		movs	r3, #128
+ 210 0060 0393     		str	r3, [sp, #12]
+  82:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 211              		.loc 1 82 5 is_stmt 1 view .LVU59
+  82:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 212              		.loc 1 82 26 is_stmt 0 view .LVU60
+ 213 0062 0227     		movs	r7, #2
+ 214 0064 0497     		str	r7, [sp, #16]
+  83:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 215              		.loc 1 83 5 is_stmt 1 view .LVU61
+  84:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
+ 216              		.loc 1 84 5 view .LVU62
+  84:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
+ 217              		.loc 1 84 27 is_stmt 0 view .LVU63
+ARM GAS  /tmp/ccYJla7i.s 			page 7
+
+
+ 218 0066 0326     		movs	r6, #3
+ 219 0068 0696     		str	r6, [sp, #24]
+  85:Core/Src/Communication/spi.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 220              		.loc 1 85 5 is_stmt 1 view .LVU64
+  85:Core/Src/Communication/spi.c ****     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+ 221              		.loc 1 85 31 is_stmt 0 view .LVU65
+ 222 006a 0525     		movs	r5, #5
+ 223 006c 0795     		str	r5, [sp, #28]
+  86:Core/Src/Communication/spi.c **** 
+ 224              		.loc 1 86 5 is_stmt 1 view .LVU66
+ 225 006e 03A9     		add	r1, sp, #12
+ 226 0070 0B48     		ldr	r0, .L11+4
+ 227              	.LVL5:
+  86:Core/Src/Communication/spi.c **** 
+ 228              		.loc 1 86 5 is_stmt 0 view .LVU67
+ 229 0072 FFF7FEFF 		bl	HAL_GPIO_Init
+ 230              	.LVL6:
+  88:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 231              		.loc 1 88 5 is_stmt 1 view .LVU68
+  88:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+ 232              		.loc 1 88 25 is_stmt 0 view .LVU69
+ 233 0076 1823     		movs	r3, #24
+ 234 0078 0393     		str	r3, [sp, #12]
+  89:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 235              		.loc 1 89 5 is_stmt 1 view .LVU70
+  89:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Pull = GPIO_NOPULL;
+ 236              		.loc 1 89 26 is_stmt 0 view .LVU71
+ 237 007a 0497     		str	r7, [sp, #16]
+  90:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 238              		.loc 1 90 5 is_stmt 1 view .LVU72
+  90:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+ 239              		.loc 1 90 26 is_stmt 0 view .LVU73
+ 240 007c 0594     		str	r4, [sp, #20]
+  91:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
+ 241              		.loc 1 91 5 is_stmt 1 view .LVU74
+  91:Core/Src/Communication/spi.c ****     GPIO_InitStruct.Alternate = GPIO_AF5_SPI1;
+ 242              		.loc 1 91 27 is_stmt 0 view .LVU75
+ 243 007e 0696     		str	r6, [sp, #24]
+  92:Core/Src/Communication/spi.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 244              		.loc 1 92 5 is_stmt 1 view .LVU76
+  92:Core/Src/Communication/spi.c ****     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+ 245              		.loc 1 92 31 is_stmt 0 view .LVU77
+ 246 0080 0795     		str	r5, [sp, #28]
+  93:Core/Src/Communication/spi.c **** 
+ 247              		.loc 1 93 5 is_stmt 1 view .LVU78
+ 248 0082 03A9     		add	r1, sp, #12
+ 249 0084 0748     		ldr	r0, .L11+8
+ 250 0086 FFF7FEFF 		bl	HAL_GPIO_Init
+ 251              	.LVL7:
+  96:Core/Src/Communication/spi.c ****     HAL_NVIC_EnableIRQ(SPI1_IRQn);
+ 252              		.loc 1 96 5 view .LVU79
+ 253 008a 2246     		mov	r2, r4
+ 254 008c 2946     		mov	r1, r5
+ 255 008e 2320     		movs	r0, #35
+ 256 0090 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+ 257              	.LVL8:
+  97:Core/Src/Communication/spi.c ****   /* USER CODE BEGIN SPI1_MspInit 1 */
+ARM GAS  /tmp/ccYJla7i.s 			page 8
+
+
+ 258              		.loc 1 97 5 view .LVU80
+ 259 0094 2320     		movs	r0, #35
+ 260 0096 FFF7FEFF 		bl	HAL_NVIC_EnableIRQ
+ 261              	.LVL9:
+ 262              		.loc 1 102 1 is_stmt 0 view .LVU81
+ 263 009a BDE7     		b	.L7
+ 264              	.L12:
+ 265              		.align	2
+ 266              	.L11:
+ 267 009c 00300140 		.word	1073819648
+ 268 00a0 00000240 		.word	1073872896
+ 269 00a4 00040240 		.word	1073873920
+ 270              		.cfi_endproc
+ 271              	.LFE221:
+ 273              		.section	.text.HAL_SPI_MspDeInit,"ax",%progbits
+ 274              		.align	1
+ 275              		.global	HAL_SPI_MspDeInit
+ 276              		.syntax unified
+ 277              		.thumb
+ 278              		.thumb_func
+ 280              	HAL_SPI_MspDeInit:
+ 281              	.LVL10:
+ 282              	.LFB222:
+ 103:Core/Src/Communication/spi.c **** 
+ 104:Core/Src/Communication/spi.c **** void HAL_SPI_MspDeInit(SPI_HandleTypeDef* spiHandle)
+ 105:Core/Src/Communication/spi.c **** {
+ 283              		.loc 1 105 1 is_stmt 1 view -0
+ 284              		.cfi_startproc
+ 285              		@ args = 0, pretend = 0, frame = 0
+ 286              		@ frame_needed = 0, uses_anonymous_args = 0
+ 287              		.loc 1 105 1 is_stmt 0 view .LVU83
+ 288 0000 08B5     		push	{r3, lr}
+ 289              	.LCFI5:
+ 290              		.cfi_def_cfa_offset 8
+ 291              		.cfi_offset 3, -8
+ 292              		.cfi_offset 14, -4
+ 106:Core/Src/Communication/spi.c **** 
+ 107:Core/Src/Communication/spi.c ****   if(spiHandle->Instance==SPI1)
+ 293              		.loc 1 107 3 is_stmt 1 view .LVU84
+ 294              		.loc 1 107 15 is_stmt 0 view .LVU85
+ 295 0002 0268     		ldr	r2, [r0]
+ 296              		.loc 1 107 5 view .LVU86
+ 297 0004 0A4B     		ldr	r3, .L17
+ 298 0006 9A42     		cmp	r2, r3
+ 299 0008 00D0     		beq	.L16
+ 300              	.LVL11:
+ 301              	.L13:
+ 108:Core/Src/Communication/spi.c ****   {
+ 109:Core/Src/Communication/spi.c ****   /* USER CODE BEGIN SPI1_MspDeInit 0 */
+ 110:Core/Src/Communication/spi.c **** 
+ 111:Core/Src/Communication/spi.c ****   /* USER CODE END SPI1_MspDeInit 0 */
+ 112:Core/Src/Communication/spi.c ****     /* Peripheral clock disable */
+ 113:Core/Src/Communication/spi.c ****     __HAL_RCC_SPI1_CLK_DISABLE();
+ 114:Core/Src/Communication/spi.c **** 
+ 115:Core/Src/Communication/spi.c ****     /**SPI1 GPIO Configuration
+ 116:Core/Src/Communication/spi.c ****     PA7     ------> SPI1_MOSI
+ 117:Core/Src/Communication/spi.c ****     PB3     ------> SPI1_SCK
+ARM GAS  /tmp/ccYJla7i.s 			page 9
+
+
+ 118:Core/Src/Communication/spi.c ****     PB4     ------> SPI1_MISO
+ 119:Core/Src/Communication/spi.c ****     */
+ 120:Core/Src/Communication/spi.c ****     HAL_GPIO_DeInit(GPIOA, GPIO_PIN_7);
+ 121:Core/Src/Communication/spi.c **** 
+ 122:Core/Src/Communication/spi.c ****     HAL_GPIO_DeInit(GPIOB, GPIO_PIN_3|GPIO_PIN_4);
+ 123:Core/Src/Communication/spi.c **** 
+ 124:Core/Src/Communication/spi.c ****     /* SPI1 interrupt Deinit */
+ 125:Core/Src/Communication/spi.c ****     HAL_NVIC_DisableIRQ(SPI1_IRQn);
+ 126:Core/Src/Communication/spi.c ****   /* USER CODE BEGIN SPI1_MspDeInit 1 */
+ 127:Core/Src/Communication/spi.c **** 
+ 128:Core/Src/Communication/spi.c ****   /* USER CODE END SPI1_MspDeInit 1 */
+ 129:Core/Src/Communication/spi.c ****   }
+ 130:Core/Src/Communication/spi.c **** }
+ 302              		.loc 1 130 1 view .LVU87
+ 303 000a 08BD     		pop	{r3, pc}
+ 304              	.LVL12:
+ 305              	.L16:
+ 113:Core/Src/Communication/spi.c **** 
+ 306              		.loc 1 113 5 is_stmt 1 view .LVU88
+ 307 000c 094A     		ldr	r2, .L17+4
+ 308 000e 536C     		ldr	r3, [r2, #68]
+ 309 0010 23F48053 		bic	r3, r3, #4096
+ 310 0014 5364     		str	r3, [r2, #68]
+ 120:Core/Src/Communication/spi.c **** 
+ 311              		.loc 1 120 5 view .LVU89
+ 312 0016 8021     		movs	r1, #128
+ 313 0018 0748     		ldr	r0, .L17+8
+ 314              	.LVL13:
+ 120:Core/Src/Communication/spi.c **** 
+ 315              		.loc 1 120 5 is_stmt 0 view .LVU90
+ 316 001a FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 317              	.LVL14:
+ 122:Core/Src/Communication/spi.c **** 
+ 318              		.loc 1 122 5 is_stmt 1 view .LVU91
+ 319 001e 1821     		movs	r1, #24
+ 320 0020 0648     		ldr	r0, .L17+12
+ 321 0022 FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 322              	.LVL15:
+ 125:Core/Src/Communication/spi.c ****   /* USER CODE BEGIN SPI1_MspDeInit 1 */
+ 323              		.loc 1 125 5 view .LVU92
+ 324 0026 2320     		movs	r0, #35
+ 325 0028 FFF7FEFF 		bl	HAL_NVIC_DisableIRQ
+ 326              	.LVL16:
+ 327              		.loc 1 130 1 is_stmt 0 view .LVU93
+ 328 002c EDE7     		b	.L13
+ 329              	.L18:
+ 330 002e 00BF     		.align	2
+ 331              	.L17:
+ 332 0030 00300140 		.word	1073819648
+ 333 0034 00380240 		.word	1073887232
+ 334 0038 00000240 		.word	1073872896
+ 335 003c 00040240 		.word	1073873920
+ 336              		.cfi_endproc
+ 337              	.LFE222:
+ 339              		.global	hspi1
+ 340              		.section	.bss.hspi1,"aw",%nobits
+ 341              		.align	2
+ARM GAS  /tmp/ccYJla7i.s 			page 10
+
+
+ 344              	hspi1:
+ 345 0000 00000000 		.space	88
+ 345      00000000 
+ 345      00000000 
+ 345      00000000 
+ 345      00000000 
+ 346              		.text
+ 347              	.Letext0:
+ 348              		.file 2 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xe.h"
+ 349              		.file 3 "/opt/gcc-arm-none-eabi/arm-none-eabi/include/machine/_default_types.h"
+ 350              		.file 4 "/opt/gcc-arm-none-eabi/arm-none-eabi/include/sys/_stdint.h"
+ 351              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 352              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 353              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 354              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h"
+ 355              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
+ 356              		.file 10 "Core/Inc/Communication/spi.h"
+ 357              		.file 11 "Core/Inc/main.h"
+ARM GAS  /tmp/ccYJla7i.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 spi.c
+     /tmp/ccYJla7i.s:21     .text.MX_SPI1_Init:00000000 $t
+     /tmp/ccYJla7i.s:27     .text.MX_SPI1_Init:00000000 MX_SPI1_Init
+     /tmp/ccYJla7i.s:98     .text.MX_SPI1_Init:00000038 $d
+     /tmp/ccYJla7i.s:344    .bss.hspi1:00000000 hspi1
+     /tmp/ccYJla7i.s:104    .text.HAL_SPI_MspInit:00000000 $t
+     /tmp/ccYJla7i.s:110    .text.HAL_SPI_MspInit:00000000 HAL_SPI_MspInit
+     /tmp/ccYJla7i.s:267    .text.HAL_SPI_MspInit:0000009c $d
+     /tmp/ccYJla7i.s:274    .text.HAL_SPI_MspDeInit:00000000 $t
+     /tmp/ccYJla7i.s:280    .text.HAL_SPI_MspDeInit:00000000 HAL_SPI_MspDeInit
+     /tmp/ccYJla7i.s:332    .text.HAL_SPI_MspDeInit:00000030 $d
+     /tmp/ccYJla7i.s:341    .bss.hspi1:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_SPI_Init
+Error_Handler
+HAL_GPIO_Init
+HAL_NVIC_SetPriority
+HAL_NVIC_EnableIRQ
+HAL_GPIO_DeInit
+HAL_NVIC_DisableIRQ

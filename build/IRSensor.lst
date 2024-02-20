@@ -1,0 +1,115 @@
+ARM GAS  /tmp/cc8TJ5P3.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"IRSensor.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.file 1 "Core/Src/Components/IRSensor.c"
+  20              		.section	.text._Initialize,"ax",%progbits
+  21              		.align	1
+  22              		.global	_Initialize
+  23              		.syntax unified
+  24              		.thumb
+  25              		.thumb_func
+  27              	_Initialize:
+  28              	.LFB223:
+   1:Core/Src/Components/IRSensor.c **** #include "Components/IRSensor.h"
+   2:Core/Src/Components/IRSensor.c **** 
+   3:Core/Src/Components/IRSensor.c **** void _Initialize(void) {
+  29              		.loc 1 3 24 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+   4:Core/Src/Components/IRSensor.c **** 
+   5:Core/Src/Components/IRSensor.c **** }
+  34              		.loc 1 5 1 view .LVU1
+  35 0000 7047     		bx	lr
+  36              		.cfi_endproc
+  37              	.LFE223:
+  39              		.section	.text._ChangeRange,"ax",%progbits
+  40              		.align	1
+  41              		.global	_ChangeRange
+  42              		.syntax unified
+  43              		.thumb
+  44              		.thumb_func
+  46              	_ChangeRange:
+  47              	.LVL0:
+  48              	.LFB224:
+   6:Core/Src/Components/IRSensor.c **** 
+   7:Core/Src/Components/IRSensor.c **** void _ChangeRange(int value) {
+  49              		.loc 1 7 30 view -0
+  50              		.cfi_startproc
+  51              		@ args = 0, pretend = 0, frame = 0
+  52              		@ frame_needed = 0, uses_anonymous_args = 0
+  53              		@ link register save eliminated.
+ARM GAS  /tmp/cc8TJ5P3.s 			page 2
+
+
+   8:Core/Src/Components/IRSensor.c **** 
+   9:Core/Src/Components/IRSensor.c **** }
+  54              		.loc 1 9 1 view .LVU3
+  55 0000 7047     		bx	lr
+  56              		.cfi_endproc
+  57              	.LFE224:
+  59              		.section	.text._CheckState,"ax",%progbits
+  60              		.align	1
+  61              		.global	_CheckState
+  62              		.syntax unified
+  63              		.thumb
+  64              		.thumb_func
+  66              	_CheckState:
+  67              	.LFB225:
+  10:Core/Src/Components/IRSensor.c **** 
+  11:Core/Src/Components/IRSensor.c **** bool _CheckState(void) {
+  68              		.loc 1 11 24 view -0
+  69              		.cfi_startproc
+  70              		@ args = 0, pretend = 0, frame = 0
+  71              		@ frame_needed = 0, uses_anonymous_args = 0
+  72              		@ link register save eliminated.
+  12:Core/Src/Components/IRSensor.c **** 
+  13:Core/Src/Components/IRSensor.c **** }
+  73              		.loc 1 13 1 view .LVU5
+  74 0000 7047     		bx	lr
+  75              		.cfi_endproc
+  76              	.LFE225:
+  78              		.global	IRSensor
+  79              		.section	.data.IRSensor,"aw"
+  80              		.align	2
+  83              	IRSensor:
+  84 0000 00000000 		.word	_Initialize
+  85 0004 00000000 		.word	_ChangeRange
+  86 0008 00000000 		.word	_CheckState
+  87              		.text
+  88              	.Letext0:
+  89              		.file 2 "Core/Inc/Components/IRSensor.h"
+ARM GAS  /tmp/cc8TJ5P3.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 IRSensor.c
+     /tmp/cc8TJ5P3.s:21     .text._Initialize:00000000 $t
+     /tmp/cc8TJ5P3.s:27     .text._Initialize:00000000 _Initialize
+     /tmp/cc8TJ5P3.s:40     .text._ChangeRange:00000000 $t
+     /tmp/cc8TJ5P3.s:46     .text._ChangeRange:00000000 _ChangeRange
+     /tmp/cc8TJ5P3.s:60     .text._CheckState:00000000 $t
+     /tmp/cc8TJ5P3.s:66     .text._CheckState:00000000 _CheckState
+     /tmp/cc8TJ5P3.s:83     .data.IRSensor:00000000 IRSensor
+     /tmp/cc8TJ5P3.s:80     .data.IRSensor:00000000 $d
+
+NO UNDEFINED SYMBOLS

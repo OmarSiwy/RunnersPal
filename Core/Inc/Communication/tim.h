@@ -25,38 +25,33 @@
 extern "C" {
 #endif
 
-/* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
-/* USER CODE BEGIN Includes */
-
-/* USER CODE END Includes */
+#include <stdbool.h>
 
 extern TIM_HandleTypeDef htim1;
-
 extern TIM_HandleTypeDef htim2;
-
 extern TIM_HandleTypeDef htim3;
-
 extern TIM_HandleTypeDef htim4;
-
 extern TIM_HandleTypeDef htim5;
 
-/* USER CODE BEGIN Private defines */
+/*
+ *
+ * Duty Cycle = Time On / Total Time x 100
+ * Resolution = 2^(Numbers of Bits) discrete levels
+ * Frequency = Clock Frequency / ((Prescaler + 1) x (Internal Clock Period + 1))
+ * @param
+ */
+void SetupTIMHandle(TIM_HandleTypeDef *handle, TIM_TypeDef *Instance, bool PWM);
 
-/* USER CODE END Private defines */
+// To Start PWM:
+// HAL_TIM_PWM_Start();
+// To Start Clock:
+// HAL_TIM_Base_Start();
 
-void MX_TIM1_Init(void);
-void MX_TIM2_Init(void);
-void MX_TIM3_Init(void);
-void MX_TIM4_Init(void);
-void MX_TIM5_Init(void);
-
+// Generated
+void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* tim_baseHandle);
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
-
-/* USER CODE BEGIN Prototypes */
-
-/* USER CODE END Prototypes */
+void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* tim_baseHandle);
 
 #ifdef __cplusplus
 }
